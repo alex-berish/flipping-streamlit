@@ -1,0 +1,6 @@
+altair==4
+cron-descriptor
+numpy
+pandas
+requests
+streamlit-nightly

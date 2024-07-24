@@ -1,12 +1,17 @@
 import streamlit as st
 from datetime import datetime
 from cron_descriptor import get_description
+from dotenv import load_dotenv
+import os
 
 # Set wide layout
 st.set_page_config(layout="wide")
 
-# Define the correct password
-PASSWORD = "VeryFastAutomation1"
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the password from environment variables
+PASSWORD = os.getenv("PASSWORD")
 
 # Hide "Made with Streamlit" footer
 hide_streamlit_style = """

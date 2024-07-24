@@ -29,15 +29,17 @@ if not st.session_state.password_correct:
     with st.form("password_form"):
         password = st.text_input("Enter password", type="password")
         submit = st.form_submit_button("Submit")
-        if submit:
+
+        # Check for submission (button click OR Enter key in password field)
+        if submit or (
+            st.session_state.get("password_form")
+            and st.session_state["password_form"]["submitted"]
+        ):
             if password == PASSWORD:
                 st.session_state.password_correct = True
-                st.session_state.password_attempted = False  # Reset the attempt flag
             else:
                 st.session_state.password_attempted = True
-
-    if st.session_state.password_attempted and not st.session_state.password_correct:
-        st.error("Incorrect password")
+                st.error("Incorrect password")
 else:
     st.sidebar.image("flipping-miracles-logo.png")
     header_html = """
@@ -167,5 +169,5 @@ else:
         if st.button("Get data"):
             # Logic for pulling data would go here
             st.write(
-                "Data request submitted. You will receive an email when the data is ready."
+                "Data request submitted. You will receive an email when the data is ready. (Not really, but as soon as I code the backend, you will)"
             )

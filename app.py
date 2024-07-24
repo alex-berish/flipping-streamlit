@@ -32,7 +32,7 @@ if "password_attempted" not in st.session_state:
 
 if not st.session_state.password_correct:
     with st.form("password_form"):
-        password = st.text_input("Enter password", type="password")
+        password = st.text_input("Enter password (might have to hit submit twice)", type="password")
         submit = st.form_submit_button("Submit")
 
         # Check for submission (button click OR Enter key in password field)
